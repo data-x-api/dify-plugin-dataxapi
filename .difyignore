@@ -1,0 +1,22 @@
+# Only what the plugin needs at runtime goes into the .difypkg.
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+dist/
+build/
+*.egg-info/
+*.difypkg
+tests/
+requirements-dev.txt
+pytest.ini
+.git/
+.gitignore
+.github/
+.idea/
+.vscode/
+.DS_Store

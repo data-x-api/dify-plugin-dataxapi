@@ -1,0 +1,37 @@
+identity:
+  author: dataxapi
+  name: dataxapi
+  label:
+    en_US: DataXAPI social & market data
+    zh_Hans: DataXAPI 社媒与市场数据
+  description:
+    en_US: Public posts, comments, accounts and search results from Douyin, Xiaohongshu (RedNote), WeChat, Kuaishou, TikTok, Bilibili and more, in one response shape. No sign-in to your own platform account; charged per call, errors are not charged.
+    zh_Hans: 抖音、小红书、微信、快手、TikTok、B站等平台的公开作品、评论、账号和搜索结果，同一种返回结构。不用登录你自己的平台账号；按次计费，出错不收费。
+  icon: icon.png
+  tags:
+    - social
+    - search
+    - business
+credentials_for_provider:
+  api_key:
+    type: secret-input
+    required: true
+    label:
+      en_US: DataXAPI API key
+      zh_Hans: DataXAPI API Key
+    placeholder:
+      en_US: Paste your key, starting with dx_
+      zh_Hans: 粘贴你的 Key，以 dx_ 开头
+    help:
+      en_US: Create a key in the DataXAPI console. New accounts can try it free.
+      zh_Hans: 在 DataXAPI 控制台创建 Key。新账户可以免费试用。
+    url: https://dataxapi.com/console/keys/?ref=dify
+tools:
+  - tools/wechat_mp_articles.yaml
+  - tools/account_posts.yaml
+  - tools/post_comments.yaml
+  - tools/keyword_search.yaml
+  - tools/call_endpoint.yaml
+extra:
+  python:
+    source: provider/dataxapi.py

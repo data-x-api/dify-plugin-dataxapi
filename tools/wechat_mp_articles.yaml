@@ -1,0 +1,37 @@
+identity:
+  name: wechat_mp_articles
+  author: dataxapi
+  label:
+    en_US: WeChat Official Account articles
+    zh_Hans: 公众号历史文章
+description:
+  human:
+    en_US: No sign-in to your own platform account; charged per call, errors are not charged, and the price is on the endpoint's page at dataxapi.com/apis. Lists the articles a WeChat Official Account published, newest first, one page a call.
+    zh_Hans: 不用登录你自己的平台账号；按次计费、出错不收费，价格见 dataxapi.com/apis 上的接口页。按发布时间从新到旧列出一个公众号发过的文章，一次调用一页。
+  llm: "No sign-in to the user's own platform account is needed; each call is charged per the endpoint's page at dataxapi.com/apis and errors are not charged. Lists the articles a WeChat Official Account (公众号) published, newest first: title, digest, link, time published. One call returns one page; to read further, call again with page.next_cursor as cursor (each page is charged as its own call)."
+parameters:
+  - name: account_id
+    type: string
+    required: true
+    form: llm
+    label:
+      en_US: Account original ID
+      zh_Hans: 公众号原始 ID
+    human_description:
+      en_US: The account's original ID, starting with gh_, for example gh_13c97ab93ce8.
+      zh_Hans: 公众号的原始 ID，以 gh_ 开头，例如 gh_13c97ab93ce8。
+    llm_description: The Official Account's original ID, starting with gh_.
+  - name: cursor
+    type: string
+    required: false
+    form: llm
+    label:
+      en_US: Cursor
+      zh_Hans: 翻页游标
+    human_description:
+      en_US: Leave empty for the first page. For the next page, pass page.next_cursor from the previous result; each page is a charged call.
+      zh_Hans: 第一页留空。下一页把上一次结果里的 page.next_cursor 填进来；每一页都是一次收费调用。
+    llm_description: Empty for the first page; otherwise page.next_cursor from the previous result, unchanged.
+extra:
+  python:
+    source: tools/wechat_mp_articles.py
