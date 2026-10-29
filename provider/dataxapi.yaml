@@ -23,8 +23,8 @@ credentials_for_provider:
       en_US: Paste your key, starting with dx_
       zh_Hans: 粘贴你的 Key，以 dx_ 开头
     help:
-      en_US: Create a key in the DataXAPI console. New accounts can try it free.
-      zh_Hans: 在 DataXAPI 控制台创建 Key。新账户可以免费试用。
+      en_US: "Create a key in the DataXAPI console. Free trial: up to 333 calls, no card."
+      zh_Hans: 在 DataXAPI 控制台创建 Key。免费试用，最多 333 次，不用绑卡。
     url: https://dataxapi.com/console/keys/?ref=dify
 tools:
   - tools/wechat_mp_articles.yaml

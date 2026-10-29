@@ -30,8 +30,8 @@ Each tool returns JSON with `data` (an `items` list or a single object), `page.n
 
 ## Setup
 
-1. Create an API key in the DataXAPI console: <https://dataxapi.com/console/keys/?ref=dify>. New accounts can try it
-   free.
+1. Create an API key in the DataXAPI console: <https://dataxapi.com/console/keys/?ref=dify>. Free trial: up to 333 calls,
+   no card.
 2. In Dify, install the plugin (from the Marketplace once it is listed, or from a local `.difypkg` file), open its
    tool settings and paste the key as the credential (it starts with `dx_`).
 3. Dify checks the key with `GET /v1/account`, which is free.

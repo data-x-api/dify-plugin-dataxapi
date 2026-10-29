@@ -24,7 +24,7 @@
 
 ## 安装和配置
 
-1. 在 DataXAPI 控制台创建 Key：<https://dataxapi.com/console/keys/?ref=dify>。新账户可以免费试用。
+1. 在 DataXAPI 控制台创建 Key：<https://dataxapi.com/console/keys/?ref=dify>。免费试用，最多 333 次，不用绑卡。
 2. 在 Dify 里安装插件（上架后从插件市场装，或者装本地 `.difypkg` 文件），打开它的工具设置，把 Key（以 `dx_` 开头）填进凭证。
 3. Dify 用免费的 `GET /v1/account` 校验 Key，不扣钱。
 
