@@ -20,3 +20,5 @@ pytest.ini
 .idea/
 .vscode/
 .DS_Store
+scripts/
+.env.example
