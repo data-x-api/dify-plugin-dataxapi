@@ -1,0 +1,37 @@
+identity:
+  name: xiaohongshu_notes_get
+  author: dataxapi
+  label:
+    en_US: Xiaohongshu note detail
+    zh_Hans: 小红书笔记详情
+description:
+  human:
+    en_US: 'Get one Xiaohongshu note by ID or link: title, text, author, engagement counts, images. It also says whether it is a brand partnership note on record. $0.02 a call; errors are not charged. No sign-in to your own platform account.'
+    zh_Hans: 按笔记编号或链接取一篇小红书笔记：标题、正文、作者、互动数、图片，以及是不是报备过的品牌合作笔记。$0.02 一次，出错不收费。不用登录你自己的平台账号。
+  llm: 'DataXAPI endpoint xiaohongshu.notes.get. Get one Xiaohongshu note by ID or link: title, text, author, engagement counts, images. It also says whether it is a brand partnership note on record. One call, one answer. $0.02 a call; errors are not charged.'
+parameters:
+- name: id
+  type: string
+  required: false
+  form: llm
+  label:
+    en_US: Note ID
+    zh_Hans: 笔记编号
+  human_description:
+    en_US: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+    zh_Hans: 翻页：填上一次返回里的 page.next_cursor。每一页单独计费
+  llm_description: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+- name: url
+  type: string
+  required: false
+  form: llm
+  label:
+    en_US: Link to the note
+    zh_Hans: 笔记链接
+  human_description:
+    en_US: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+    zh_Hans: 翻页：填上一次返回里的 page.next_cursor。每一页单独计费
+  llm_description: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+extra:
+  python:
+    source: tools/xiaohongshu_notes_get.py

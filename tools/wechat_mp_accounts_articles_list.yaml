@@ -1,0 +1,62 @@
+identity:
+  name: wechat_mp_accounts_articles_list
+  author: dataxapi
+  label:
+    en_US: WeChat Official Account articles
+    zh_Hans: 微信公众号文章列表
+description:
+  human:
+    en_US: 'Get a page of the articles a WeChat Official Account published, newest first: title, digest, link, time published. Each also says whether it was the lead article or one below, its format and cover. The page''s articles tab by default; its videos or pictures tab when asked. $0.02 a call; errors are not charged. No sign-in to your own platform account.'
+    zh_Hans: 按公众号原始编号取一页它发布的文章，从新到旧：标题、摘要、链接、发布时间、头条还是次条、内容形态、封面。默认取主页的“文章”栏，也可取“视频”“贴图”栏。$0.02 一次，出错不收费。不用登录你自己的平台账号。
+  llm: 'DataXAPI endpoint wechat_mp.accounts.articles.list. Get a page of the articles a WeChat Official Account published, newest first: title, digest, link, time published. Each also says whether it was the lead article or one below, its format and cover. The page''s articles tab by default; its videos or pictures tab when asked. One call returns one page; for more, call again with page.next_cursor as cursor (each page is its own charged call). $0.02 a call; errors are not charged.'
+parameters:
+- name: id
+  type: string
+  required: true
+  form: llm
+  label:
+    en_US: Account's original ID
+    zh_Hans: 公众号原始编号
+  human_description:
+    en_US: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+    zh_Hans: 翻页：填上一次返回里的 page.next_cursor。每一页单独计费
+  llm_description: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+- name: tab
+  type: select
+  required: false
+  form: llm
+  label:
+    en_US: Tab
+    zh_Hans: 栏目
+  human_description:
+    en_US: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+    zh_Hans: 翻页：填上一次返回里的 page.next_cursor。每一页单独计费
+  llm_description: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+  options:
+  - value: articles
+    label:
+      en_US: Articles
+      zh_Hans: 文章
+  - value: videos
+    label:
+      en_US: Videos
+      zh_Hans: 视频
+  - value: images
+    label:
+      en_US: Images
+      zh_Hans: 贴图
+  default: articles
+- name: cursor
+  type: string
+  required: false
+  form: llm
+  label:
+    en_US: Next page cursor
+    zh_Hans: 翻页游标
+  human_description:
+    en_US: Cursor returned by the previous page
+    zh_Hans: 上一页返回的游标
+  llm_description: Cursor returned by the previous page
+extra:
+  python:
+    source: tools/wechat_mp_accounts_articles_list.py

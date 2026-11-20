@@ -1,0 +1,48 @@
+identity:
+  name: xiaohongshu_users_notes_list
+  author: dataxapi
+  label:
+    en_US: Xiaohongshu user notes
+    zh_Hans: 小红书用户笔记
+description:
+  human:
+    en_US: 'Get a page of the notes a Xiaohongshu account posted, by user ID or profile link: title, text, engagement counts, images, whether pinned. $0.02 a call; errors are not charged. No sign-in to your own platform account.'
+    zh_Hans: 按用户编号或主页链接取一页该账号发布的小红书笔记：标题、正文、互动数、图片、是否置顶。$0.02 一次，出错不收费。不用登录你自己的平台账号。
+  llm: 'DataXAPI endpoint xiaohongshu.users.notes.list. Get a page of the notes a Xiaohongshu account posted, by user ID or profile link: title, text, engagement counts, images, whether pinned. One call returns one page; for more, call again with page.next_cursor as cursor (each page is its own charged call). $0.02 a call; errors are not charged.'
+parameters:
+- name: id
+  type: string
+  required: false
+  form: llm
+  label:
+    en_US: User ID
+    zh_Hans: 用户编号
+  human_description:
+    en_US: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+    zh_Hans: 翻页：填上一次返回里的 page.next_cursor。每一页单独计费
+  llm_description: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+- name: url
+  type: string
+  required: false
+  form: llm
+  label:
+    en_US: Link to the profile
+    zh_Hans: 用户主页链接
+  human_description:
+    en_US: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+    zh_Hans: 翻页：填上一次返回里的 page.next_cursor。每一页单独计费
+  llm_description: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+- name: cursor
+  type: string
+  required: false
+  form: llm
+  label:
+    en_US: Next page cursor
+    zh_Hans: 翻页游标
+  human_description:
+    en_US: Cursor returned by the previous page
+    zh_Hans: 上一页返回的游标
+  llm_description: Cursor returned by the previous page
+extra:
+  python:
+    source: tools/xiaohongshu_users_notes_list.py

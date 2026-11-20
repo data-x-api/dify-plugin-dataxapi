@@ -1,0 +1,48 @@
+identity:
+  name: wechat_channels_videos_get
+  author: dataxapi
+  label:
+    en_US: WeChat Channels video detail
+    zh_Hans: 微信视频号作品详情
+description:
+  human:
+    en_US: 'Get one WeChat Channels video by its ID, a search result''s export/ ID or its share link: description, author, time published, likes, comments, forwards, saves, and the video file''s address with the key that decrypts it. $0.02 a call; errors are not charged. No sign-in to your own platform account.'
+    zh_Hans: 按作品编号、搜索结果的 export/ 编号或分享链接取一条视频号作品：文案、作者、发布时间、点赞、评论、转发、收藏数，以及视频文件地址和解密密钥。$0.02 一次，出错不收费。不用登录你自己的平台账号。
+  llm: 'DataXAPI endpoint wechat_channels.videos.get. Get one WeChat Channels video by its ID, a search result''s export/ ID or its share link: description, author, time published, likes, comments, forwards, saves, and the video file''s address with the key that decrypts it. One call, one answer. $0.02 a call; errors are not charged.'
+parameters:
+- name: id
+  type: string
+  required: false
+  form: llm
+  label:
+    en_US: Video's ID
+    zh_Hans: 作品编号
+  human_description:
+    en_US: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+    zh_Hans: 翻页：填上一次返回里的 page.next_cursor。每一页单独计费
+  llm_description: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+- name: url
+  type: string
+  required: false
+  form: llm
+  label:
+    en_US: Video's share link
+    zh_Hans: 作品的分享链接
+  human_description:
+    en_US: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+    zh_Hans: 翻页：填上一次返回里的 page.next_cursor。每一页单独计费
+  llm_description: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+- name: export_id
+  type: string
+  required: false
+  form: llm
+  label:
+    en_US: Search result video ID
+    zh_Hans: 搜索结果里的作品编号
+  human_description:
+    en_US: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+    zh_Hans: 翻页：填上一次返回里的 page.next_cursor。每一页单独计费
+  llm_description: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+extra:
+  python:
+    source: tools/wechat_channels_videos_get.py

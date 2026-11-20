@@ -1,0 +1,37 @@
+identity:
+  name: weibo_posts_search
+  author: dataxapi
+  label:
+    en_US: Weibo realtime search
+    zh_Hans: 微博实时搜索
+description:
+  human:
+    en_US: 'Get a page of Weibo posts for search terms, newest first: text (a long post is cut short here), author and follower count, likes, comments, reposts, video plays, pictures, topics. $0.002 a call; errors are not charged. No sign-in to your own platform account.'
+    zh_Hans: 按搜索词取一页微博，新发的在前：正文（长微博在这里是截短的）、作者和粉丝数、点赞、评论、转发数、视频播放数、图片、话题。$0.002 一次，出错不收费。不用登录你自己的平台账号。
+  llm: 'DataXAPI endpoint weibo.posts.search. Get a page of Weibo posts for search terms, newest first: text (a long post is cut short here), author and follower count, likes, comments, reposts, video plays, pictures, topics. One call returns one page; for more, call again with page.next_cursor as cursor (each page is its own charged call). $0.002 a call; errors are not charged.'
+parameters:
+- name: query
+  type: string
+  required: true
+  form: llm
+  label:
+    en_US: Search terms
+    zh_Hans: 搜索词
+  human_description:
+    en_US: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+    zh_Hans: 翻页：填上一次返回里的 page.next_cursor。每一页单独计费
+  llm_description: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+- name: cursor
+  type: string
+  required: false
+  form: llm
+  label:
+    en_US: Next page cursor
+    zh_Hans: 翻页游标
+  human_description:
+    en_US: Cursor returned by the previous page
+    zh_Hans: 上一页返回的游标
+  llm_description: Cursor returned by the previous page
+extra:
+  python:
+    source: tools/weibo_posts_search.py

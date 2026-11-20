@@ -1,0 +1,37 @@
+identity:
+  name: douyin_videos_metrics
+  author: dataxapi
+  label:
+    en_US: Douyin video play count
+    zh_Hans: 抖音视频播放量
+description:
+  human:
+    en_US: 'Get a Douyin video''s counts as of now, by its ID: plays and likes. $0.002 a call; errors are not charged. No sign-in to your own platform account.'
+    zh_Hans: 按视频编号取一条抖音视频此刻的数字：播放数、点赞数。$0.002 一次，出错不收费。不用登录你自己的平台账号。
+  llm: 'DataXAPI endpoint douyin.videos.metrics. Get a Douyin video''s counts as of now, by its ID: plays and likes. One call, one answer. $0.002 a call; errors are not charged.'
+parameters:
+- name: id
+  type: string
+  required: false
+  form: llm
+  label:
+    en_US: Video ID
+    zh_Hans: 视频编号
+  human_description:
+    en_US: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+    zh_Hans: 翻页：填上一次返回里的 page.next_cursor。每一页单独计费
+  llm_description: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+- name: url
+  type: string
+  required: false
+  form: llm
+  label:
+    en_US: Link to the video
+    zh_Hans: 视频链接
+  human_description:
+    en_US: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+    zh_Hans: 翻页：填上一次返回里的 page.next_cursor。每一页单独计费
+  llm_description: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+extra:
+  python:
+    source: tools/douyin_videos_metrics.py

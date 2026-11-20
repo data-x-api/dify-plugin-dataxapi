@@ -1,0 +1,26 @@
+identity:
+  name: wechat_mp_articles_metrics
+  author: dataxapi
+  label:
+    en_US: WeChat Official Account article stats
+    zh_Hans: 微信公众号文章互动数据
+description:
+  human:
+    en_US: 'Get the current counts of a WeChat Official Account article by its long link: reads, likes, recommends, shares, saves, comments. $0.02 a call; errors are not charged. No sign-in to your own platform account.'
+    zh_Hans: 按文章长链接取这篇公众号文章此刻的数字：阅读、点赞、推荐、分享、收藏、评论。$0.02 一次，出错不收费。不用登录你自己的平台账号。
+  llm: 'DataXAPI endpoint wechat_mp.articles.metrics. Get the current counts of a WeChat Official Account article by its long link: reads, likes, recommends, shares, saves, comments. One call, one answer. $0.02 a call; errors are not charged.'
+parameters:
+- name: url
+  type: string
+  required: true
+  form: llm
+  label:
+    en_US: Article's long link
+    zh_Hans: 文章的长链接
+  human_description:
+    en_US: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+    zh_Hans: 翻页：填上一次返回里的 page.next_cursor。每一页单独计费
+  llm_description: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+extra:
+  python:
+    source: tools/wechat_mp_articles_metrics.py

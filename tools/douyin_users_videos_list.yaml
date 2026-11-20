@@ -1,0 +1,48 @@
+identity:
+  name: douyin_users_videos_list
+  author: dataxapi
+  label:
+    en_US: Douyin user videos
+    zh_Hans: 抖音用户视频
+description:
+  human:
+    en_US: 'Get a page of the videos a Douyin account has posted, newest first: caption, engagement counts, time posted. $0.002 a call; errors are not charged. No sign-in to your own platform account.'
+    zh_Hans: 按账号编号取一页这个抖音账号发布的视频，从新到旧：文案、互动数、发布时间。$0.002 一次，出错不收费。不用登录你自己的平台账号。
+  llm: 'DataXAPI endpoint douyin.users.videos.list. Get a page of the videos a Douyin account has posted, newest first: caption, engagement counts, time posted. One call returns one page; for more, call again with page.next_cursor as cursor (each page is its own charged call). $0.002 a call; errors are not charged.'
+parameters:
+- name: id
+  type: string
+  required: false
+  form: llm
+  label:
+    en_US: Account ID
+    zh_Hans: 账号编号
+  human_description:
+    en_US: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+    zh_Hans: 翻页：填上一次返回里的 page.next_cursor。每一页单独计费
+  llm_description: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+- name: url
+  type: string
+  required: false
+  form: llm
+  label:
+    en_US: Link to the profile
+    zh_Hans: 账号主页链接
+  human_description:
+    en_US: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+    zh_Hans: 翻页：填上一次返回里的 page.next_cursor。每一页单独计费
+  llm_description: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+- name: cursor
+  type: string
+  required: false
+  form: llm
+  label:
+    en_US: Next page cursor
+    zh_Hans: 翻页游标
+  human_description:
+    en_US: Cursor returned by the previous page
+    zh_Hans: 上一页返回的游标
+  llm_description: Cursor returned by the previous page
+extra:
+  python:
+    source: tools/douyin_users_videos_list.py

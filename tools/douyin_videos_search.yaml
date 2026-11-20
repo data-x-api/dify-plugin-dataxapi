@@ -1,0 +1,86 @@
+identity:
+  name: douyin_videos_search
+  author: dataxapi
+  label:
+    en_US: Douyin video search
+    zh_Hans: 抖音视频搜索
+description:
+  human:
+    en_US: 'Search Douyin videos by terms, a page at a time, sorted by relevance, newest or most liked and filtered by time posted: caption, author with follower count, engagement counts. $0.02 a call; errors are not charged. No sign-in to your own platform account.'
+    zh_Hans: 按搜索词取一页抖音视频，可按最新或最多点赞排序、按发布时间筛选：文案、作者及粉丝数、互动数。$0.02 一次，出错不收费。不用登录你自己的平台账号。
+  llm: 'DataXAPI endpoint douyin.videos.search. Search Douyin videos by terms, a page at a time, sorted by relevance, newest or most liked and filtered by time posted: caption, author with follower count, engagement counts. One call returns one page; for more, call again with page.next_cursor as cursor (each page is its own charged call). $0.02 a call; errors are not charged.'
+parameters:
+- name: query
+  type: string
+  required: true
+  form: llm
+  label:
+    en_US: Search terms
+    zh_Hans: 搜索词
+  human_description:
+    en_US: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+    zh_Hans: 翻页：填上一次返回里的 page.next_cursor。每一页单独计费
+  llm_description: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+- name: sort
+  type: select
+  required: false
+  form: llm
+  label:
+    en_US: Sort
+    zh_Hans: 排序
+  human_description:
+    en_US: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+    zh_Hans: 翻页：填上一次返回里的 page.next_cursor。每一页单独计费
+  llm_description: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+  options:
+  - value: relevance
+    label:
+      en_US: Relevance
+      zh_Hans: 综合
+  - value: latest
+    label:
+      en_US: Latest
+      zh_Hans: 最新
+  - value: popular
+    label:
+      en_US: Popular
+      zh_Hans: 最热
+  default: relevance
+- name: published_within
+  type: select
+  required: false
+  form: llm
+  label:
+    en_US: Published within
+    zh_Hans: 发布时间
+  human_description:
+    en_US: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+    zh_Hans: 翻页：填上一次返回里的 page.next_cursor。每一页单独计费
+  llm_description: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+  options:
+  - value: day
+    label:
+      en_US: Day
+      zh_Hans: 一天内
+  - value: week
+    label:
+      en_US: Week
+      zh_Hans: 一周内
+  - value: half_year
+    label:
+      en_US: Half year
+      zh_Hans: 半年内
+- name: cursor
+  type: string
+  required: false
+  form: llm
+  label:
+    en_US: Next page cursor
+    zh_Hans: 翻页游标
+  human_description:
+    en_US: Cursor returned by the previous page
+    zh_Hans: 上一页返回的游标
+  llm_description: Cursor returned by the previous page
+extra:
+  python:
+    source: tools/douyin_videos_search.py

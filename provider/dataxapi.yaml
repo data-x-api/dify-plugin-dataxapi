@@ -9,9 +9,9 @@ identity:
     zh_Hans: 抖音、小红书、微信、快手、TikTok、B站等平台的公开作品、评论、账号和搜索结果，同一种返回结构。不用登录你自己的平台账号；按次计费，出错不收费。
   icon: icon.png
   tags:
-    - social
-    - search
-    - business
+  - social
+  - search
+  - business
 credentials_for_provider:
   api_key:
     type: secret-input
@@ -23,15 +23,46 @@ credentials_for_provider:
       en_US: Paste your key, starting with dx_
       zh_Hans: 粘贴你的 Key，以 dx_ 开头
     help:
-      en_US: "Create a key in the DataXAPI console. Free trial: up to 333 calls, no card."
+      en_US: 'Create a key in the DataXAPI console. Free trial: up to 333 calls, no card.'
       zh_Hans: 在 DataXAPI 控制台创建 Key。免费试用，最多 333 次，不用绑卡。
     url: https://dataxapi.com/console/keys/?ref=dify
 tools:
-  - tools/wechat_mp_articles.yaml
-  - tools/account_posts.yaml
-  - tools/post_comments.yaml
-  - tools/keyword_search.yaml
-  - tools/call_endpoint.yaml
+- tools/xiaohongshu_notes_search.yaml
+- tools/douyin_videos_search.yaml
+- tools/wechat_mp_accounts_articles_list.yaml
+- tools/douyin_videos_comments_list.yaml
+- tools/douyin_videos_metrics.yaml
+- tools/douyin_videos_get.yaml
+- tools/douyin_users_videos_list.yaml
+- tools/wechat_mp_articles_get.yaml
+- tools/douyin_users_get.yaml
+- tools/xiaohongshu_notes_get.yaml
+- tools/douyin_users_search.yaml
+- tools/douyin_index_keywords_history.yaml
+- tools/douyin_trends_list.yaml
+- tools/wechat_posts_search.yaml
+- tools/wechat_channels_videos_search.yaml
+- tools/wechat_accounts_search.yaml
+- tools/wechat_channels_videos_get.yaml
+- tools/xiaohongshu_notes_comments_list.yaml
+- tools/wechat_channels_users_videos_list.yaml
+- tools/xiaohongshu_users_notes_list.yaml
+- tools/weibo_posts_search.yaml
+- tools/bilibili_videos_search.yaml
+- tools/xiaohongshu_users_get.yaml
+- tools/xiaohongshu_pgy_keywords_history.yaml
+- tools/wechat_mp_articles_metrics.yaml
+- tools/wechat_channels_videos_comments_list.yaml
+- tools/douyin_index_keywords_related.yaml
+- tools/zhihu_posts_search.yaml
+- tools/kuaishou_videos_search.yaml
+- tools/douyin_xingtu_creators_search.yaml
+- tools/tiktok_videos_search.yaml
+- tools/youtube_videos_transcript_get.yaml
+- tools/x_posts_search.yaml
+- tools/reddit_posts_search.yaml
+- tools/find_endpoint.yaml
+- tools/call_endpoint.yaml
 extra:
   python:
     source: provider/dataxapi.py

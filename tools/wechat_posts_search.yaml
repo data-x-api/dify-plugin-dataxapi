@@ -1,0 +1,106 @@
+identity:
+  name: wechat_posts_search
+  author: dataxapi
+  label:
+    en_US: WeChat Search articles and videos
+    zh_Hans: 微信搜一搜综合搜索
+description:
+  human:
+    en_US: 'Get a page of WeChat Search results for search terms: Official Account articles and Channels videos mixed, each saying in type whether it is an article or a video; by relevance, newest or hottest, filtered by time posted, or articles only or videos only: title or description, the source account''s name, time published, an article''s link (with a band of reads on some), a video''s likes and saves. WeChat Search gives no account ID. $0.02 a call; errors are not charged. No sign-in to your own platform account.'
+    zh_Hans: 按搜索词在微信搜一搜里取一页结果，公众号文章和视频号视频混在一起，每条用 type 标明是文章还是视频；可按相关、最新或最热排、按发布时间筛，也可只搜文章或只搜视频：标题或文案、来源账号名称、发布时间，文章带链接（有的带阅读数档位），视频带点赞和收藏数。搜一搜不给账号编号。$0.02 一次，出错不收费。不用登录你自己的平台账号。
+  llm: 'DataXAPI endpoint wechat.posts.search. Get a page of WeChat Search results for search terms: Official Account articles and Channels videos mixed, each saying in type whether it is an article or a video; by relevance, newest or hottest, filtered by time posted, or articles only or videos only: title or description, the source account''s name, time published, an article''s link (with a band of reads on some), a video''s likes and saves. WeChat Search gives no account ID. One call returns one page; for more, call again with page.next_cursor as cursor (each page is its own charged call). $0.02 a call; errors are not charged.'
+parameters:
+- name: query
+  type: string
+  required: true
+  form: llm
+  label:
+    en_US: Search terms
+    zh_Hans: 搜索词
+  human_description:
+    en_US: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+    zh_Hans: 翻页：填上一次返回里的 page.next_cursor。每一页单独计费
+  llm_description: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+- name: sort
+  type: select
+  required: false
+  form: llm
+  label:
+    en_US: Sort
+    zh_Hans: 排序
+  human_description:
+    en_US: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+    zh_Hans: 翻页：填上一次返回里的 page.next_cursor。每一页单独计费
+  llm_description: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+  options:
+  - value: relevance
+    label:
+      en_US: Relevance
+      zh_Hans: 综合
+  - value: latest
+    label:
+      en_US: Latest
+      zh_Hans: 最新
+  - value: popular
+    label:
+      en_US: Popular
+      zh_Hans: 最热
+  default: relevance
+- name: published_within
+  type: select
+  required: false
+  form: llm
+  label:
+    en_US: Published within
+    zh_Hans: 发布时间
+  human_description:
+    en_US: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+    zh_Hans: 翻页：填上一次返回里的 page.next_cursor。每一页单独计费
+  llm_description: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+  options:
+  - value: day
+    label:
+      en_US: Day
+      zh_Hans: 一天内
+  - value: week
+    label:
+      en_US: Week
+      zh_Hans: 一周内
+  - value: half_year
+    label:
+      en_US: Half year
+      zh_Hans: 半年内
+- name: type
+  type: select
+  required: false
+  form: llm
+  label:
+    en_US: Type
+    zh_Hans: 类型
+  human_description:
+    en_US: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+    zh_Hans: 翻页：填上一次返回里的 page.next_cursor。每一页单独计费
+  llm_description: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+  options:
+  - value: article
+    label:
+      en_US: Article
+      zh_Hans: 公众号文章
+  - value: video
+    label:
+      en_US: Video
+      zh_Hans: 视频
+- name: cursor
+  type: string
+  required: false
+  form: llm
+  label:
+    en_US: Next page cursor
+    zh_Hans: 翻页游标
+  human_description:
+    en_US: Cursor returned by the previous page
+    zh_Hans: 上一页返回的游标
+  llm_description: Cursor returned by the previous page
+extra:
+  python:
+    source: tools/wechat_posts_search.py

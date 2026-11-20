@@ -1,0 +1,37 @@
+identity:
+  name: find_endpoint
+  author: dataxapi
+  label:
+    en_US: Find an endpoint
+    zh_Hans: 找接口
+description:
+  human:
+    en_US: Describe the data you need in plain words, in Chinese or English; get the endpoints that serve it, with price, required parameters and an example. Free.
+    zh_Hans: 用一句话描述要的数据，中文英文都行；列出能用的接口、价格、必填参数和示例。免费。
+  llm: "Free. Searches DataXAPI's 237 endpoints by a need described in plain words (Chinese or English), for example '小红书笔记评论', 'wechat article reads', 'douyin keyword trend'. Returns endpoint IDs with price, required parameters and example parameters; call one with call_endpoint. Use it when no named tool fits."
+parameters:
+  - name: query
+    type: string
+    required: true
+    form: llm
+    label:
+      en_US: What data
+      zh_Hans: 要什么数据
+    human_description:
+      en_US: For example "xiaohongshu note comments" or "WeChat article reads".
+      zh_Hans: 例如“小红书笔记评论”“公众号文章阅读数”。
+    llm_description: The data needed, in plain words, Chinese or English.
+  - name: platform
+    type: string
+    required: false
+    form: llm
+    label:
+      en_US: Platform
+      zh_Hans: 平台
+    human_description:
+      en_US: Optional, to narrow it down, for example douyin, xiaohongshu, wechat_mp, tiktok.
+      zh_Hans: 可不填。只看一个平台时填，例如 douyin、xiaohongshu、wechat_mp、tiktok。
+    llm_description: Optional platform ID to narrow the search, such as douyin, xiaohongshu, wechat_mp, wechat_channels, tiktok, youtube, x, reddit.
+extra:
+  python:
+    source: tools/find_endpoint.py

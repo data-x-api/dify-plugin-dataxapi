@@ -1,0 +1,37 @@
+identity:
+  name: douyin_index_keywords_related
+  author: dataxapi
+  label:
+    en_US: Douyin trend-index related keywords
+    zh_Hans: 抖音巨量算数关联词
+description:
+  human:
+    en_US: 'Get the keywords related to a keyword on Douyin in one week, from the platform''s own keyword tool: those searched together with it and those that appear with it in content, each with its relevance, its place by relevance, its search index and its composite index. An index is the platform''s score of volume, not a count of searches. $0.002 a call; errors are not charged. No sign-in to your own platform account.'
+    zh_Hans: 按一个关键词取它在抖音上某一周的关联词（巨量算数）：搜索里一起出现的词和内容里一起出现的词，各带相关度、相关度名次、搜索指数和综合指数。指数是平台算出的热度分，不是搜索次数。$0.002 一次，出错不收费。不用登录你自己的平台账号。
+  llm: 'DataXAPI endpoint douyin.index.keywords.related. Get the keywords related to a keyword on Douyin in one week, from the platform''s own keyword tool: those searched together with it and those that appear with it in content, each with its relevance, its place by relevance, its search index and its composite index. An index is the platform''s score of volume, not a count of searches. One call, one answer. $0.002 a call; errors are not charged.'
+parameters:
+- name: keyword
+  type: string
+  required: true
+  form: llm
+  label:
+    en_US: Keyword
+    zh_Hans: 关键词
+  human_description:
+    en_US: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+    zh_Hans: 翻页：填上一次返回里的 page.next_cursor。每一页单独计费
+  llm_description: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+- name: until
+  type: string
+  required: true
+  form: llm
+  label:
+    en_US: To (date)
+    zh_Hans: 结束日期
+  human_description:
+    en_US: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+    zh_Hans: 翻页：填上一次返回里的 page.next_cursor。每一页单独计费
+  llm_description: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+extra:
+  python:
+    source: tools/douyin_index_keywords_related.py

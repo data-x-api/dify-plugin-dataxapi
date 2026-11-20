@@ -1,0 +1,122 @@
+identity:
+  name: douyin_xingtu_creators_search
+  author: dataxapi
+  label:
+    en_US: Douyin Xingtu creator search
+    zh_Hans: 抖音星图达人搜索
+description:
+  human:
+    en_US: Search Douyin creators on Xingtu by words in their name, filtered by followers, expected CPM (in yuan) and gender, or ordered by expected CPM, lowest first:Xingtu creator ID, name, location, content categories, followers; in the full view also what an integrated and a custom video cost, expected CPMs (in yuan), expected views, the last 30 days' interaction and completion ratios and median views, the e-commerce level, gender and content labels. The creator ID the other Xingtu endpoints take comes from here. $0.004 a call; errors are not charged. No sign-in to your own platform account.
+    zh_Hans: 按昵称里的词搜索星图上的抖音达人，可按粉丝数、预期 CPM（元）、性别筛选，按预期 CPM 从低到高排：星图达人编号、昵称、所在地、内容类目、粉丝数；完整档另有植入和定制视频报价、预期 CPM（元）、预估播放数、近 30 天互动率、完播率和播放中位数、电商带货等级、性别和内容标签。其他星图接口要的达人编号从这里取。$0.004 一次，出错不收费。不用登录你自己的平台账号。
+  llm: DataXAPI endpoint douyin.xingtu.creators.search. Search Douyin creators on Xingtu by words in their name, filtered by followers, expected CPM (in yuan) and gender, or ordered by expected CPM, lowest first:Xingtu creator ID, name, location, content categories, followers; in the full view also what an integrated and a custom video cost, expected CPMs (in yuan), expected views, the last 30 days' interaction and completion ratios and median views, the e-commerce level, gender and content labels. The creator ID the other Xingtu endpoints take comes from here. One call returns one page; for more, call again with page.next_cursor as cursor (each page is its own charged call). $0.004 a call; errors are not charged.
+parameters:
+- name: query
+  type: string
+  required: true
+  form: llm
+  label:
+    en_US: Search terms
+    zh_Hans: 搜索词
+  human_description:
+    en_US: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+    zh_Hans: 翻页：填上一次返回里的 page.next_cursor。每一页单独计费
+  llm_description: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+- name: followers_min
+  type: number
+  required: false
+  form: llm
+  label:
+    en_US: Followers at least
+    zh_Hans: 粉丝数不少于
+  human_description:
+    en_US: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+    zh_Hans: 翻页：填上一次返回里的 page.next_cursor。每一页单独计费
+  llm_description: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+- name: followers_max
+  type: number
+  required: false
+  form: llm
+  label:
+    en_US: Followers at most
+    zh_Hans: 粉丝数不多于
+  human_description:
+    en_US: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+    zh_Hans: 翻页：填上一次返回里的 page.next_cursor。每一页单独计费
+  llm_description: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+- name: cpm_min
+  type: number
+  required: false
+  form: llm
+  label:
+    en_US: CPM at least
+    zh_Hans: 千次播放成本下限
+  human_description:
+    en_US: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+    zh_Hans: 翻页：填上一次返回里的 page.next_cursor。每一页单独计费
+  llm_description: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+- name: cpm_max
+  type: number
+  required: false
+  form: llm
+  label:
+    en_US: CPM at most
+    zh_Hans: 千次播放成本上限
+  human_description:
+    en_US: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+    zh_Hans: 翻页：填上一次返回里的 page.next_cursor。每一页单独计费
+  llm_description: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+- name: gender
+  type: select
+  required: false
+  form: llm
+  label:
+    en_US: Gender
+    zh_Hans: 性别
+  human_description:
+    en_US: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+    zh_Hans: 翻页：填上一次返回里的 page.next_cursor。每一页单独计费
+  llm_description: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+  options:
+  - value: female
+    label:
+      en_US: Female
+      zh_Hans: 女
+  - value: male
+    label:
+      en_US: Male
+      zh_Hans: 男
+- name: sort
+  type: select
+  required: false
+  form: llm
+  label:
+    en_US: Sort
+    zh_Hans: 排序
+  human_description:
+    en_US: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+    zh_Hans: 翻页：填上一次返回里的 page.next_cursor。每一页单独计费
+  llm_description: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+  options:
+  - value: relevance
+    label:
+      en_US: Relevance
+      zh_Hans: 综合
+  - value: lowest_cpm
+    label:
+      en_US: Lowest cpm
+      zh_Hans: 千次播放成本最低
+  default: relevance
+- name: cursor
+  type: string
+  required: false
+  form: llm
+  label:
+    en_US: Next page cursor
+    zh_Hans: 翻页游标
+  human_description:
+    en_US: Cursor returned by the previous page
+    zh_Hans: 上一页返回的游标
+  llm_description: Cursor returned by the previous page
+extra:
+  python:
+    source: tools/douyin_xingtu_creators_search.py

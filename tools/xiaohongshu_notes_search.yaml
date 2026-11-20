@@ -1,0 +1,114 @@
+identity:
+  name: xiaohongshu_notes_search
+  author: dataxapi
+  label:
+    en_US: Xiaohongshu note search
+    zh_Hans: 小红书笔记搜索
+description:
+  human:
+    en_US: 'Search Xiaohongshu notes by terms: title, text, author, engagement counts, images, and a link that opens. Each says whether it is a brand partnership note on record. By relevance, newest, most liked, most commented or most saved; video or image notes only; published in the last day, week or half year. $0.02 a call; errors are not charged. No sign-in to your own platform account.'
+    zh_Hans: 按搜索词取一页小红书笔记：标题、正文、作者、互动数、图片，链接带访问令牌可直接打开；标明哪条是报备过的品牌合作笔记。可按综合、最新、最多点赞、最多评论、最多收藏排，可只要视频或图文笔记、只要一天、一周或半年内发布的。$0.02 一次，出错不收费。不用登录你自己的平台账号。
+  llm: 'DataXAPI endpoint xiaohongshu.notes.search. Search Xiaohongshu notes by terms: title, text, author, engagement counts, images, and a link that opens. Each says whether it is a brand partnership note on record. By relevance, newest, most liked, most commented or most saved; video or image notes only; published in the last day, week or half year. One call returns one page; for more, call again with page.next_cursor as cursor (each page is its own charged call). $0.02 a call; errors are not charged.'
+parameters:
+- name: query
+  type: string
+  required: true
+  form: llm
+  label:
+    en_US: Search terms
+    zh_Hans: 搜索词
+  human_description:
+    en_US: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+    zh_Hans: 翻页：填上一次返回里的 page.next_cursor。每一页单独计费
+  llm_description: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+- name: sort
+  type: select
+  required: false
+  form: llm
+  label:
+    en_US: Sort
+    zh_Hans: 排序
+  human_description:
+    en_US: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+    zh_Hans: 翻页：填上一次返回里的 page.next_cursor。每一页单独计费
+  llm_description: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+  options:
+  - value: relevance
+    label:
+      en_US: Relevance
+      zh_Hans: 综合
+  - value: latest
+    label:
+      en_US: Latest
+      zh_Hans: 最新
+  - value: popular
+    label:
+      en_US: Popular
+      zh_Hans: 最热
+  - value: most_comments
+    label:
+      en_US: Most comments
+      zh_Hans: 评论最多
+  - value: most_favorites
+    label:
+      en_US: Most favorites
+      zh_Hans: 收藏最多
+  default: relevance
+- name: type
+  type: select
+  required: false
+  form: llm
+  label:
+    en_US: Type
+    zh_Hans: 类型
+  human_description:
+    en_US: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+    zh_Hans: 翻页：填上一次返回里的 page.next_cursor。每一页单独计费
+  llm_description: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+  options:
+  - value: video
+    label:
+      en_US: Video
+      zh_Hans: 视频
+  - value: image
+    label:
+      en_US: Image
+      zh_Hans: 图文
+- name: published_within
+  type: select
+  required: false
+  form: llm
+  label:
+    en_US: Published within
+    zh_Hans: 发布时间
+  human_description:
+    en_US: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+    zh_Hans: 翻页：填上一次返回里的 page.next_cursor。每一页单独计费
+  llm_description: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+  options:
+  - value: day
+    label:
+      en_US: Day
+      zh_Hans: 一天内
+  - value: week
+    label:
+      en_US: Week
+      zh_Hans: 一周内
+  - value: half_year
+    label:
+      en_US: Half year
+      zh_Hans: 半年内
+- name: cursor
+  type: string
+  required: false
+  form: llm
+  label:
+    en_US: Next page cursor
+    zh_Hans: 翻页游标
+  human_description:
+    en_US: Cursor returned by the previous page
+    zh_Hans: 上一页返回的游标
+  llm_description: Cursor returned by the previous page
+extra:
+  python:
+    source: tools/xiaohongshu_notes_search.py

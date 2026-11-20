@@ -1,0 +1,48 @@
+identity:
+  name: youtube_videos_transcript_get
+  author: dataxapi
+  label:
+    en_US: YouTube video transcript
+    zh_Hans: YouTube 视频字幕
+description:
+  human:
+    en_US: 'Get the transcript of a YouTube video by ID or link: the whole text and timed segments. lang chooses the language of the captions. $0.002 a call; errors are not charged. No sign-in to your own platform account.'
+    zh_Hans: 按视频编号或链接取 YouTube 视频的字幕全文和带时间的分段，可用 lang 指定字幕语言。$0.002 一次，出错不收费。不用登录你自己的平台账号。
+  llm: 'DataXAPI endpoint youtube.videos.transcript.get. Get the transcript of a YouTube video by ID or link: the whole text and timed segments. lang chooses the language of the captions. One call, one answer. $0.002 a call; errors are not charged.'
+parameters:
+- name: id
+  type: string
+  required: false
+  form: llm
+  label:
+    en_US: Video ID
+    zh_Hans: 视频编号
+  human_description:
+    en_US: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+    zh_Hans: 翻页：填上一次返回里的 page.next_cursor。每一页单独计费
+  llm_description: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+- name: url
+  type: string
+  required: false
+  form: llm
+  label:
+    en_US: Link to the video
+    zh_Hans: 视频链接
+  human_description:
+    en_US: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+    zh_Hans: 翻页：填上一次返回里的 page.next_cursor。每一页单独计费
+  llm_description: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+- name: lang
+  type: string
+  required: false
+  form: llm
+  label:
+    en_US: Language
+    zh_Hans: 语言
+  human_description:
+    en_US: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+    zh_Hans: 翻页：填上一次返回里的 page.next_cursor。每一页单独计费
+  llm_description: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+extra:
+  python:
+    source: tools/youtube_videos_transcript_get.py

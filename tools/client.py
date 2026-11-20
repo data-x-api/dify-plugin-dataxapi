@@ -10,7 +10,7 @@ import httpx
 
 BASE_URL = "https://api.dataxapi.com"
 SOURCE = "dify"
-USER_AGENT = "dataxapi-dify-plugin/0.1.0"
+USER_AGENT = "dataxapi-dify-plugin/0.2.0"
 TIMEOUT_SECONDS = 90.0
 
 # Endpoint IDs look like "douyin.videos.comments.list".
@@ -41,7 +41,8 @@ class DataXAPIError(Exception):
         self.retry = retry
 
     def describe(self) -> str:
-        parts = [f"DataXAPI error {self.code}: {self.message}"]
+        message = self.message if self.message.endswith((".", "。", "!", "?")) else self.message + "."
+        parts = [f"DataXAPI error {self.code}: {message}"]
         if self.charged is False:
             parts.append("Nothing was charged.")
         elif self.charged is None and self.request_id:
@@ -164,6 +165,10 @@ class DataXAPIClient:
         if BODY_PARAMS.intersection(given):
             return self._request("POST", path, body=given)
         return self._request("GET", path, query=to_query(given))
+
+    def find(self, query: str, platform: str | None = None) -> dict[str, Any]:
+        """Endpoints matching a need in plain words, with price and parameters. Free."""
+        return self._request("GET", "/v1/catalog/search", query=to_query(clean_params({"query": query, "platform": platform})))
 
     def account(self) -> dict[str, Any]:
         """Balance and key details. Free; needs the key."""

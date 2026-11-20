@@ -1,0 +1,26 @@
+identity:
+  name: xiaohongshu_pgy_keywords_history
+  author: dataxapi
+  label:
+    en_US: Xiaohongshu PGY keyword search index
+    zh_Hans: 小红书蒲公英关键词逐日搜索指数
+description:
+  human:
+    en_US: Get a keyword's day-by-day search index on Xiaohongshu over about the last three months, from the platform's creator marketplace, with each day's notes about the keyword and how often they were shown, read and engaged with. The platform sets the period; it cannot be chosen. The search index is the platform's index, not a count of searches; days are calendar days in China time (UTC+8). $0.04 a call; errors are not charged. No sign-in to your own platform account.
+    zh_Hans: 按一个关键词取它在小红书上最近约三个月逐日的搜索指数（蒲公英），并带每天和这个词有关的笔记数、曝光数、阅读数和互动数。时间范围由平台定，不能选；搜索指数是平台算出的指数，不是搜索次数；日期是中国时间（UTC+8）的自然日。$0.04 一次，出错不收费。不用登录你自己的平台账号。
+  llm: DataXAPI endpoint xiaohongshu.pgy.keywords.history. Get a keyword's day-by-day search index on Xiaohongshu over about the last three months, from the platform's creator marketplace, with each day's notes about the keyword and how often they were shown, read and engaged with. The platform sets the period; it cannot be chosen. The search index is the platform's index, not a count of searches; days are calendar days in China time (UTC+8). One call, one answer. $0.04 a call; errors are not charged.
+parameters:
+- name: keyword
+  type: string
+  required: true
+  form: llm
+  label:
+    en_US: Keyword
+    zh_Hans: 关键词
+  human_description:
+    en_US: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+    zh_Hans: 翻页：填上一次返回里的 page.next_cursor。每一页单独计费
+  llm_description: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+extra:
+  python:
+    source: tools/xiaohongshu_pgy_keywords_history.py

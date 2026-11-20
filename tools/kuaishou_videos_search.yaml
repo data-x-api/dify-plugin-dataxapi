@@ -1,0 +1,110 @@
+identity:
+  name: kuaishou_videos_search
+  author: dataxapi
+  label:
+    en_US: Kuaishou video search
+    zh_Hans: 快手视频搜索
+description:
+  human:
+    en_US: 'Search Kuaishou posts by terms, a page at a time, sorted newest or most liked first and filtered by time posted and video length: caption, author, play and engagement counts, time posted, whether it is a video or a photo set, and a video''s length. $0.02 a call; errors are not charged. No sign-in to your own platform account.'
+    zh_Hans: 按搜索词取一页快手作品，可按最新或最多点赞排序、按发布时间和视频时长筛选：文案、作者、播放数、互动数、发布时间、是视频还是图集，视频带时长。$0.02 一次，出错不收费。不用登录你自己的平台账号。
+  llm: 'DataXAPI endpoint kuaishou.videos.search. Search Kuaishou posts by terms, a page at a time, sorted newest or most liked first and filtered by time posted and video length: caption, author, play and engagement counts, time posted, whether it is a video or a photo set, and a video''s length. One call returns one page; for more, call again with page.next_cursor as cursor (each page is its own charged call). $0.02 a call; errors are not charged.'
+parameters:
+- name: query
+  type: string
+  required: true
+  form: llm
+  label:
+    en_US: Search terms
+    zh_Hans: 搜索词
+  human_description:
+    en_US: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+    zh_Hans: 翻页：填上一次返回里的 page.next_cursor。每一页单独计费
+  llm_description: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+- name: sort
+  type: select
+  required: false
+  form: llm
+  label:
+    en_US: Sort
+    zh_Hans: 排序
+  human_description:
+    en_US: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+    zh_Hans: 翻页：填上一次返回里的 page.next_cursor。每一页单独计费
+  llm_description: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+  options:
+  - value: relevance
+    label:
+      en_US: Relevance
+      zh_Hans: 综合
+  - value: latest
+    label:
+      en_US: Latest
+      zh_Hans: 最新
+  - value: popular
+    label:
+      en_US: Popular
+      zh_Hans: 最热
+  default: relevance
+- name: published_within
+  type: select
+  required: false
+  form: llm
+  label:
+    en_US: Published within
+    zh_Hans: 发布时间
+  human_description:
+    en_US: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+    zh_Hans: 翻页：填上一次返回里的 page.next_cursor。每一页单独计费
+  llm_description: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+  options:
+  - value: day
+    label:
+      en_US: Day
+      zh_Hans: 一天内
+  - value: week
+    label:
+      en_US: Week
+      zh_Hans: 一周内
+  - value: month
+    label:
+      en_US: Month
+      zh_Hans: 一个月内
+- name: duration
+  type: select
+  required: false
+  form: llm
+  label:
+    en_US: Duration
+    zh_Hans: 视频时长
+  human_description:
+    en_US: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+    zh_Hans: 翻页：填上一次返回里的 page.next_cursor。每一页单独计费
+  llm_description: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+  options:
+  - value: under_1_min
+    label:
+      en_US: Under 1 min
+      zh_Hans: 1 分钟以内
+  - value: 1_to_5_min
+    label:
+      en_US: 1 to 5 min
+      zh_Hans: 1 到 5 分钟
+  - value: over_5_min
+    label:
+      en_US: Over 5 min
+      zh_Hans: 5 分钟以上
+- name: cursor
+  type: string
+  required: false
+  form: llm
+  label:
+    en_US: Next page cursor
+    zh_Hans: 翻页游标
+  human_description:
+    en_US: Cursor returned by the previous page
+    zh_Hans: 上一页返回的游标
+  llm_description: Cursor returned by the previous page
+extra:
+  python:
+    source: tools/kuaishou_videos_search.py

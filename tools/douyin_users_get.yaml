@@ -1,0 +1,37 @@
+identity:
+  name: douyin_users_get
+  author: dataxapi
+  label:
+    en_US: Douyin user profile
+    zh_Hans: 抖音用户资料
+description:
+  human:
+    en_US: 'Get a Douyin user''s profile by account ID or profile link: name, handle, bio, follower, following and post counts, total likes, verification; in the full view also what the badge says, whether it is an organisation''s or shop''s (blue V), whether the profile has a product showcase, whether the account may sell live, and whether it is live now, with the room''s ID. $0.002 a call; errors are not charged. No sign-in to your own platform account.'
+    zh_Hans: 按账号编号或主页链接取抖音用户资料：显示名、抖音号、简介、粉丝数、关注数、作品数、获赞总数、是否认证；完整档另有认证说明、是不是企业或店铺认证（蓝 V）、主页有没有商品橱窗、能不能直播带货、是否正在直播和直播间编号。$0.002 一次，出错不收费。不用登录你自己的平台账号。
+  llm: 'DataXAPI endpoint douyin.users.get. Get a Douyin user''s profile by account ID or profile link: name, handle, bio, follower, following and post counts, total likes, verification; in the full view also what the badge says, whether it is an organisation''s or shop''s (blue V), whether the profile has a product showcase, whether the account may sell live, and whether it is live now, with the room''s ID. One call, one answer. $0.002 a call; errors are not charged.'
+parameters:
+- name: id
+  type: string
+  required: false
+  form: llm
+  label:
+    en_US: Account ID
+    zh_Hans: 账号编号
+  human_description:
+    en_US: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+    zh_Hans: 翻页：填上一次返回里的 page.next_cursor。每一页单独计费
+  llm_description: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+- name: url
+  type: string
+  required: false
+  form: llm
+  label:
+    en_US: Link to the profile
+    zh_Hans: 账号主页链接
+  human_description:
+    en_US: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+    zh_Hans: 翻页：填上一次返回里的 page.next_cursor。每一页单独计费
+  llm_description: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+extra:
+  python:
+    source: tools/douyin_users_get.py

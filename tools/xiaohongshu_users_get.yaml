@@ -1,0 +1,37 @@
+identity:
+  name: xiaohongshu_users_get
+  author: dataxapi
+  label:
+    en_US: Xiaohongshu user profile
+    zh_Hans: 小红书用户资料
+description:
+  human:
+    en_US: 'Get a Xiaohongshu account by user ID or profile link: name, handle, bio, follower, following and note counts, verification, and the gender and region its profile shows. $0.02 a call; errors are not charged. No sign-in to your own platform account.'
+    zh_Hans: 按用户编号或主页链接取小红书账号资料：昵称、小红书号、简介、粉丝数、关注数、笔记数、是否认证，以及主页显示的性别和自填地区。$0.02 一次，出错不收费。不用登录你自己的平台账号。
+  llm: 'DataXAPI endpoint xiaohongshu.users.get. Get a Xiaohongshu account by user ID or profile link: name, handle, bio, follower, following and note counts, verification, and the gender and region its profile shows. One call, one answer. $0.02 a call; errors are not charged.'
+parameters:
+- name: id
+  type: string
+  required: false
+  form: llm
+  label:
+    en_US: User ID
+    zh_Hans: 用户编号
+  human_description:
+    en_US: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+    zh_Hans: 翻页：填上一次返回里的 page.next_cursor。每一页单独计费
+  llm_description: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+- name: url
+  type: string
+  required: false
+  form: llm
+  label:
+    en_US: Link to the profile
+    zh_Hans: 用户主页链接
+  human_description:
+    en_US: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+    zh_Hans: 翻页：填上一次返回里的 page.next_cursor。每一页单独计费
+  llm_description: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+extra:
+  python:
+    source: tools/xiaohongshu_users_get.py

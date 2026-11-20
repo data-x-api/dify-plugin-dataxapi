@@ -1,0 +1,26 @@
+identity:
+  name: wechat_mp_articles_get
+  author: dataxapi
+  label:
+    en_US: WeChat Official Account article detail
+    zh_Hans: 微信公众号文章详情
+description:
+  human:
+    en_US: 'Get one WeChat Official Account article by its link: title, text, time published, the account''s name and IDs. It also says whether it was the lead article or one below, its format, cover, digest, byline, "read the original" link and the IP location it was posted from. $0.02 a call; errors are not charged. No sign-in to your own platform account.'
+    zh_Hans: 按文章链接取一篇公众号文章：标题、正文、发布时间、公众号的名称和编号，以及头条还是次条、内容形态、封面、摘要、署名作者、阅读原文链接和发文 IP 属地。$0.02 一次，出错不收费。不用登录你自己的平台账号。
+  llm: 'DataXAPI endpoint wechat_mp.articles.get. Get one WeChat Official Account article by its link: title, text, time published, the account''s name and IDs. It also says whether it was the lead article or one below, its format, cover, digest, byline, "read the original" link and the IP location it was posted from. One call, one answer. $0.02 a call; errors are not charged.'
+parameters:
+- name: url
+  type: string
+  required: true
+  form: llm
+  label:
+    en_US: Link to the article
+    zh_Hans: 文章链接
+  human_description:
+    en_US: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+    zh_Hans: 翻页：填上一次返回里的 page.next_cursor。每一页单独计费
+  llm_description: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+extra:
+  python:
+    source: tools/wechat_mp_articles_get.py

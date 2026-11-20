@@ -8,7 +8,7 @@ description:
   human:
     en_US: No sign-in to your own platform account; charged per call, errors are not charged, and the price is on the endpoint's page at dataxapi.com/apis. Calls any DataXAPI endpoint by its ID with JSON parameters, one page a call.
     zh_Hans: 不用登录你自己的平台账号；按次计费、出错不收费，价格见 dataxapi.com/apis 上的接口页。用接口编号加 JSON 参数调用任意一个 DataXAPI 接口，一次调用一页。
-  llm: "No sign-in to the user's own platform account is needed; each call is charged per the endpoint's page at dataxapi.com/apis and errors are not charged. Calls any DataXAPI endpoint by its ID (for example douyin.users.get, tiktok.videos.transcript.get, x.posts.search) with its parameters as a JSON object. Endpoint IDs, parameters and prices are listed at https://dataxapi.com/llms-full.txt. One call returns one page; for more, pass page.next_cursor as cursor in a new call (charged on its own)."
+  llm: "No sign-in to the user's own platform account is needed; each call is charged per the endpoint's page at dataxapi.com/apis and errors are not charged. Calls any DataXAPI endpoint by its ID (for example douyin.users.get, tiktok.videos.transcript.get, x.posts.search) with its parameters as a JSON object. Find the endpoint ID, its parameters and price with find_endpoint (free), or at https://dataxapi.com/llms-full.txt. One call returns one page; for more, pass page.next_cursor as cursor in a new call (charged on its own)."
 parameters:
   - name: endpoint
     type: string
@@ -18,8 +18,8 @@ parameters:
       en_US: Endpoint ID
       zh_Hans: 接口编号
     human_description:
-      en_US: The endpoint's ID, such as douyin.users.get. Every endpoint is listed at dataxapi.com/apis.
-      zh_Hans: 接口编号，例如 douyin.users.get。全部接口见 dataxapi.com/apis。
+      en_US: The endpoint's ID, such as douyin.users.get. Find one with the Find an endpoint tool, or at dataxapi.com/apis.
+      zh_Hans: 接口编号，例如 douyin.users.get。用“找接口”工具找，或见 dataxapi.com/apis。
     llm_description: The endpoint ID, dot-separated, such as douyin.videos.comments.list.
   - name: params
     type: string

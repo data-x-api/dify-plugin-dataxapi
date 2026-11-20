@@ -1,0 +1,37 @@
+identity:
+  name: wechat_channels_users_videos_list
+  author: dataxapi
+  label:
+    en_US: WeChat Channels account videos
+    zh_Hans: 微信视频号用户作品
+description:
+  human:
+    en_US: 'Get a page of the videos a WeChat Channels account published, newest first, by the account''s ID: description, time published, likes, comments, forwards, saves, length. $0.02 a call; errors are not charged. No sign-in to your own platform account.'
+    zh_Hans: 按视频号账号编号取一页它发布的视频，从新到旧：文案、发布时间、点赞、评论、转发、收藏数、视频时长。$0.02 一次，出错不收费。不用登录你自己的平台账号。
+  llm: 'DataXAPI endpoint wechat_channels.users.videos.list. Get a page of the videos a WeChat Channels account published, newest first, by the account''s ID: description, time published, likes, comments, forwards, saves, length. One call returns one page; for more, call again with page.next_cursor as cursor (each page is its own charged call). $0.02 a call; errors are not charged.'
+parameters:
+- name: id
+  type: string
+  required: true
+  form: llm
+  label:
+    en_US: Channels account's ID
+    zh_Hans: 视频号账号编号
+  human_description:
+    en_US: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+    zh_Hans: 翻页：填上一次返回里的 page.next_cursor。每一页单独计费
+  llm_description: 'Next page: the page.next_cursor of the last answer. Each page is charged on its own'
+- name: cursor
+  type: string
+  required: false
+  form: llm
+  label:
+    en_US: Next page cursor
+    zh_Hans: 翻页游标
+  human_description:
+    en_US: Cursor returned by the previous page
+    zh_Hans: 上一页返回的游标
+  llm_description: Cursor returned by the previous page
+extra:
+  python:
+    source: tools/wechat_channels_users_videos_list.py
