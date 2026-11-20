@@ -191,6 +191,14 @@ def tool_source(cap: dict, common: dict) -> str:
     )
 
 
+CJK = re.compile(r"\s*[（(][^)）]*[\u4e00-\u9fff][^)）]*[)）]|[\u4e00-\u9fff]+")
+
+
+def english(text: str) -> str:
+    """The English README must hold no Chinese: drop Chinese names in brackets, then any left."""
+    return re.sub(r"\s{2,}", " ", CJK.sub("", text)).strip()
+
+
 def table(caps: list[dict], lang: str) -> str:
     rows = []
     if lang == "zh":
@@ -202,7 +210,7 @@ def table(caps: list[dict], lang: str) -> str:
     else:
         rows.append("| Tool | What it returns | Price |\n|---|---|---|")
         for c in caps:
-            rows.append(f"| {c['name']['en']} | {c['summary']['en']} | {price_words(c['pricing'])[1]} |")
+            rows.append(f"| {english(c['name']['en'])} | {english(c['summary']['en'])} | {price_words(c['pricing'])[1]} |")
         rows.append("| Find an endpoint | Endpoints for a need described in plain words, with price and parameters | free |")
         rows.append("| Call any endpoint | Any of the 237 endpoints by its ID | that endpoint's price |")
     return "\n".join(rows)

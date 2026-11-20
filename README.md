@@ -1,12 +1,12 @@
 # DataXAPI social & market data for Dify
 
-Public data from Douyin, Xiaohongshu (RedNote), WeChat Official Accounts and Channels, Weibo, Bilibili, Zhihu and Kuaishou, plus Douyin's trend index (巨量算数), Xiaohongshu PGY (蒲公英), Douyin Xingtu (星图), TikTok, YouTube, X and Reddit, in Dify workflows, chatflows and agents. One [DataXAPI](https://dataxapi.com/?ref=dify) key, 36 ready tools, and all 237 endpoints through *Find an endpoint* and *Call any endpoint*.
+Public data from Douyin, Xiaohongshu (RedNote), WeChat Official Accounts and Channels, Weibo, Bilibili, Zhihu and Kuaishou, plus Douyin's trend index (Juliang Suanshu), Xiaohongshu PGY (Pugongying), Douyin Xingtu, TikTok, YouTube, X and Reddit, in Dify workflows, chatflows and agents. One [DataXAPI](https://dataxapi.com/?ref=dify) key, 36 ready tools, and all 237 endpoints through *Find an endpoint* and *Call any endpoint*.
 
 - **No sign-in to your own platform account**, no cookies, no QR login.
 - **Pay per call; errors are not charged.** Each tool states its price, and every result says what that call cost (`billing.amount`, US dollars).
 - **Free trial: up to 333 calls, no card.** Top up from $10; the balance does not expire.
 
-Source: <https://github.com/data-x-api/dify-plugin-dataxapi> · Contact: support@dataxapi.com · 中文说明：[readme/README_zh_Hans.md](readme/README_zh_Hans.md)
+Source: <https://github.com/data-x-api/dify-plugin-dataxapi> · Contact: support@dataxapi.com · Chinese: [readme/README_zh_Hans.md](readme/README_zh_Hans.md)
 
 ## Tools
 
@@ -26,7 +26,7 @@ The first 30 are the endpoints DataXAPI's customers called most in the last 30 d
 | Douyin user profile | Get a Douyin user's profile by account ID or profile link: name, handle, bio, follower, following and post counts, total likes, verification; in the full view also what the badge says, whether it is an organisation's or shop's (blue V), whether the profile has a product showcase, whether the account may sell live, and whether it is live now, with the room's ID. | $0.002 a call |
 | Xiaohongshu note detail | Get one Xiaohongshu note by ID or link: title, text, author, engagement counts, images. It also says whether it is a brand partnership note on record. | $0.02 a call |
 | Douyin user search | Search Douyin accounts by terms, a page at a time: account ID, display name, avatar, follower count, post count, total likes. | $0.002 a call |
-| Douyin trend-index keyword trends | Get the day-by-day search index and composite index of a keyword, or of one to five keywords at once, on Douyin over a date range, from 巨量算数 (the Douyin index), with the daily averages of the period, of the one before and of a year earlier. An index is the platform's score of volume, not a count of searches; days are calendar days in China time (UTC+8). | $0.006 a call |
+| Douyin trend-index keyword trends | Get the day-by-day search index and composite index of a keyword, or of one to five keywords at once, on Douyin over a date range, from (the Douyin index), with the daily averages of the period, of the one before and of a year earlier. An index is the platform's score of volume, not a count of searches; days are calendar days in China time (UTC+8). | $0.006 a call |
 | Douyin hot search board | Get a Douyin hot list: hot searches, rising topics, topic ranking, top search terms or the music chart, with rank and heat. | $0.002 a call |
 | WeChat Search articles and videos | Get a page of WeChat Search results for search terms: Official Account articles and Channels videos mixed, each saying in type whether it is an article or a video; by relevance, newest or hottest, filtered by time posted, or articles only or videos only: title or description, the source account's name, time published, an article's link (with a band of reads on some), a video's likes and saves. WeChat Search gives no account ID. | $0.02 a call |
 | WeChat Channels video search | Get a page of WeChat Channels videos for search terms through WeChat Search, by relevance, newest or hottest, filtered by time posted: description, the account's name and avatar, time published, likes and saves, length, cover. WeChat Search gives no account ID, and a video's ID is an encrypted one starting with export/: given as export_id to wechat_channels.videos.get it yields the numeric ID, the video file's address and the key that decrypts it; it expires, so use it soon. | $0.02 a call |
